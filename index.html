@@ -1,1 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Docente Administrativo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primario: #1a237e;
+            --color-secundario: #3949ab;
+            --color-acento: #ffb300;
+            --color-fondo: #f5f5f5;
+            --color-texto: #1c1c1c;
+        }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-texto);
+            background-color: var(--color-fondo);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(120deg, var(--color-primario), var(--color-secundario));
+            color: #fff;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        nav {
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0.5rem 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-primario);
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 999px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--color-primario);
+            color: #fff;
+        }
+
+        main {
+            padding: 2rem 1rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background-color: #fff;
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(26, 35, 126, 0.08);
+        }
+
+        h2 {
+            color: var(--color-primario);
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--color-secundario);
+            margin-bottom: 0.25rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .card {
+            background-color: #fafafa;
+            border-radius: 14px;
+            padding: 1.25rem;
+            border: 1px solid rgba(26, 35, 126, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(26, 35, 126, 0.12);
+        }
+
+        .lista-detalles {
+            padding-left: 1rem;
+        }
+
+        .lista-detalles li {
+            margin-bottom: 0.4rem;
+        }
+
+        .actividades {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .actividad {
+            border-left: 5px solid var(--color-acento);
+            background-color: #fff7e6;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+        }
+
+        .actividad span {
+            font-weight: 700;
+            color: var(--color-primario);
+            display: block;
+        }
+
+        .documentos {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .documento {
+            padding: 1.25rem;
+            border: 1px solid rgba(26, 35, 126, 0.12);
+            border-radius: 14px;
+            background: linear-gradient(120deg, #fff, #f8f9ff);
+        }
+
+        .documento strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--color-secundario);
+        }
+
+        .evidencias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .evidencia {
+            background-color: #fafafa;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(26, 35, 126, 0.1);
+        }
+
+        .evidencia img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .evidencia p {
+            margin: 0;
+            padding: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .sello {
+            text-align: center;
+            margin-top: 2rem;
+            font-style: italic;
+            color: #555;
+        }
+
+        footer {
+            background-color: var(--color-primario);
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 1rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-weight: 300;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portafolio Docente Administrativo</h1>
+        <p>Gestión educativa integral | Año escolar 2024</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#presentacion">Presentación Personal</a></li>
+            <li><a href="#silabo">Sílabo</a></li>
+            <li><a href="#normativas">Normativas Legales</a></li>
+            <li><a href="#documentos">Documentos Institucionales</a></li>
+            <li><a href="#actividades">Fichas Semanales</a></li>
+            <li><a href="#trabajos">Trabajos Semanales</a></li>
+            <li><a href="#evidencias">Evidencias Fotográficas</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="presentacion">
+            <h2>Presentación Personal</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Datos Generales</h3>
+                    <ul class="lista-detalles">
+                        <li><strong>Nombre:</strong> Lic. María Fernanda Salazar</li>
+                        <li><strong>Especialidad:</strong> Gestión educativa y orientación escolar</li>
+                        <li><strong>Años de experiencia:</strong> 12 años</li>
+                        <li><strong>Correo institucional:</strong> mfsalazar@colegiobolivar.edu.pe</li>
+                        <li><strong>Teléfono:</strong> (01) 345-6789</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Perfil Profesional</h3>
+                    <p>Docente administradora con sólida experiencia en planificación curricular, acompañamiento docente y liderazgo pedagógico. Comprometida con la innovación educativa, la cultura organizacional y el fortalecimiento de la convivencia escolar mediante procesos colaborativos y centrados en el estudiante.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="silabo">
+            <h2>Sílabo Anual</h2>
+            <div class="card">
+                <h3>Propósitos de aprendizaje</h3>
+                <p>Desarrollar competencias administrativas y pedagógicas que permitan al docente gestionar de forma efectiva los procesos educativos, fortalecer el trabajo colaborativo y garantizar el acompañamiento integral del estudiante.</p>
+            </div>
+            <div class="grid grid-3" style="margin-top: 1.5rem;">
+                <div class="card">
+                    <h3>Unidades</h3>
+                    <ul class="lista-detalles">
+                        <li>Unidad 1: Planificación estratégica y PEI.</li>
+                        <li>Unidad 2: Gestión pedagógica y currículo.</li>
+                        <li>Unidad 3: Convivencia, tutoría y bienestar.</li>
+                        <li>Unidad 4: Evaluación y mejora continua.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Metodología</h3>
+                    <ul class="lista-detalles">
+                        <li>Aprendizaje basado en proyectos.</li>
+                        <li>Estudios de caso institucional.</li>
+                        <li>Trabajo colaborativo en comunidades de aprendizaje.</li>
+                        <li>Reflexión pedagógica y autoevaluación.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Evaluación</h3>
+                    <ul class="lista-detalles">
+                        <li>Portafolio de evidencias administrativas.</li>
+                        <li>Informes de gestión y planes de mejora.</li>
+                        <li>Autoevaluaciones y coevaluaciones semanales.</li>
+                        <li>Presentaciones formales ante el consejo académico.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="normativas">
+            <h2>Normativas Legales Vigentes</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Marco Normativo General</h3>
+                    <ul class="lista-detalles">
+                        <li>Ley General de Educación N.º 28044.</li>
+                        <li>Reglamento de la Gestión del Sistema Educativo - D.S. N.º 011-2012-ED.</li>
+                        <li>Política Nacional de Convivencia Escolar.</li>
+                        <li>Lineamientos para la gestión de riesgo de desastres en instituciones educativas.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Protocolos Internos</h3>
+                    <ul class="lista-detalles">
+                        <li>Manual de convivencia institucional 2024.</li>
+                        <li>Protocolo de actuación frente a situaciones de violencia escolar.</li>
+                        <li>Lineamientos de evaluación formativa.</li>
+                        <li>Procedimientos para la comunicación con familias y aliados estratégicos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="documentos">
+            <h2>Documentos Institucionales</h2>
+            <div class="documentos">
+                <div class="documento">
+                    <strong>Proyecto Educativo Institucional (PEI)</strong>
+                    <p>Visión, misión y objetivos estratégicos institucionales 2021-2025 con enfoque en ciudadanía activa, inclusión y sostenibilidad.</p>
+                </div>
+                <div class="documento">
+                    <strong>Plan Anual de Trabajo (PAT)</strong>
+                    <p>Programación de actividades académicas, administrativas y comunitarias para el año escolar, con indicadores de seguimiento trimestral.</p>
+                </div>
+                <div class="documento">
+                    <strong>Reglamento Interno (RI)</strong>
+                    <p>Normas de convivencia, compromisos de las familias, sanciones y mecanismos de participación estudiantil.</p>
+                </div>
+                <div class="documento">
+                    <strong>Proyecto Curricular Institucional (PCI)</strong>
+                    <p>Adaptación curricular institucional según diagnóstico situacional y perfiles de egreso por niveles educativos.</p>
+                </div>
+                <div class="documento">
+                    <strong>Plan de Tutoría, Orientación y Convivencia Escolar (PTOCE)</strong>
+                    <p>Acciones preventivas, protocolos de intervención, acompañamiento socioemocional y articulación con servicios externos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="actividades">
+            <h2>Fichas de Actividad Semanales</h2>
+            <div class="actividades">
+                <!-- Weeks 1-16 -->
+                <div class="actividad">
+                    <span>Semana 1 | Diagnóstico Institucional</span>
+                    Reuniones de equipo directivo, análisis FODA y consolidación de información de matrícula.
+                </div>
+                <div class="actividad">
+                    <span>Semana 2 | Planificación Curricular</span>
+                    Talleres de alineamiento curricular y socialización de planes de unidad.
+                </div>
+                <div class="actividad">
+                    <span>Semana 3 | Gestión Administrativa</span>
+                    Actualización de inventarios, revisión de contratos y asignación de recursos pedagógicos.
+                </div>
+                <div class="actividad">
+                    <span>Semana 4 | Convivencia Escolar</span>
+                    Capacitaciones sobre convivencia y actualización del comité de tutoría.
+                </div>
+                <div class="actividad">
+                    <span>Semana 5 | Formación Docente</span>
+                    Acompañamiento en aula y retroalimentación docente con enfoque formativo.
+                </div>
+                <div class="actividad">
+                    <span>Semana 6 | Participación Familiar</span>
+                    Jornadas de trabajo con APAFA y presentación de compromisos educativos.
+                </div>
+                <div class="actividad">
+                    <span>Semana 7 | Evaluación Continua</span>
+                    Revisión de instrumentos evaluativos y consolidación de evidencias de logro.
+                </div>
+                <div class="actividad">
+                    <span>Semana 8 | Gestión de Proyectos</span>
+                    Diseño de proyectos interdisciplinarios y comité de innovación pedagógica.
+                </div>
+                <div class="actividad">
+                    <span>Semana 9 | Seguridad y Bienestar</span>
+                    Simulacros, actualización de brigadas y plan de riesgos institucional.
+                </div>
+                <div class="actividad">
+                    <span>Semana 10 | Seguimiento Académico</span>
+                    Entrevistas personalizadas con estudiantes y elaboración de planes de refuerzo.
+                </div>
+                <div class="actividad">
+                    <span>Semana 11 | Gestión Documentaria</span>
+                    Organización de expedientes, archivos digitales y reportes ministeriales.
+                </div>
+                <div class="actividad">
+                    <span>Semana 12 | Comunidad Educativa</span>
+                    Actividades de responsabilidad social y alianzas con instituciones locales.
+                </div>
+                <div class="actividad">
+                    <span>Semana 13 | Innovación y TIC</span>
+                    Implementación de recursos digitales, plataformas educativas y capacitación TIC.
+                </div>
+                <div class="actividad">
+                    <span>Semana 14 | Evaluación Institucional</span>
+                    Recolección de indicadores, análisis de resultados y propuestas de mejora.
+                </div>
+                <div class="actividad">
+                    <span>Semana 15 | Rendición de Cuentas</span>
+                    Presentación de informes a la comunidad educativa y autoridades.
+                </div>
+                <div class="actividad">
+                    <span>Semana 16 | Cierre y Proyección</span>
+                    Sistematización de aprendizajes, celebración de logros y planificación del siguiente año.
+                </div>
+            </div>
+        </section>
+
+        <section id="trabajos">
+            <h2>Trabajos y Entregables por Semana</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Semana 1</h3>
+                    <p>Informe de diagnóstico institucional con indicadores cuantitativos.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 2</h3>
+                    <p>Mapa de competencias por área y cronograma de sesiones modelo.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 3</h3>
+                    <p>Inventario actualizado con plan de mantenimiento preventivo.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 4</h3>
+                    <p>Plan de convivencia y actas del comité de tutoría 2024.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 5</h3>
+                    <p>Registro de acompañamiento docente y compromisos de mejora.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 6</h3>
+                    <p>Acta de asamblea APAFA y plan de trabajo conjunto.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 7</h3>
+                    <p>Matriz de evaluación formativa y rúbricas validadas.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 8</h3>
+                    <p>Carpeta de proyectos interdisciplinarios con responsables.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 9</h3>
+                    <p>Informe de simulacro y actualización del plan de seguridad.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 10</h3>
+                    <p>Planes de refuerzo académico personalizados.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 11</h3>
+                    <p>Repositorio digital con expedientes completos y respaldos.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 12</h3>
+                    <p>Reporte de actividades comunitarias con evidencias.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 13</h3>
+                    <p>Plan de implementación TIC y capacitación docente.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 14</h3>
+                    <p>Informe de evaluación institucional y matriz de mejora.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 15</h3>
+                    <p>Presentación ejecutiva para rendición de cuentas.</p>
+                </div>
+                <div class="card">
+                    <h3>Semana 16</h3>
+                    <p>Informe final de portafolio y plan estratégico 2025.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="evidencias">
+            <h2>Evidencias Fotográficas</h2>
+            <div class="evidencias">
+                <div class="evidencia">
+                    <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=800&q=60" alt="Reunión institucional">
+                    <p>Reunión de coordinación con el equipo directivo sobre el plan anual de trabajo.</p>
+                </div>
+                <div class="evidencia">
+                    <img src="https://images.unsplash.com/photo-1529070538774-7b4a0b1e9410?auto=format&fit=crop&w=800&q=60" alt="Capacitación docente">
+                    <p>Taller de formación docente en estrategias de evaluación formativa.</p>
+                </div>
+                <div class="evidencia">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=60" alt="Trabajo con familias">
+                    <p>Encuentro con padres de familia para fortalecer la participación comunitaria.</p>
+                </div>
+                <div class="evidencia">
+                    <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=60" alt="Acompañamiento estudiantil">
+                    <p>Sesión de tutoría y orientación estudiantil con enfoque socioemocional.</p>
+                </div>
+            </div>
+            <p class="sello">Todas las evidencias cuentan con autorización institucional y cumplen las normas de protección de datos.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Portafolio Docente Administrativo | Colegio Bolivariano | 2024</p>
+    </footer>
+</body>
+</html>
